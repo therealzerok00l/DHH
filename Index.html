@@ -3,239 +3,175 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Dancehall Hooligans | Official Website</title>
+    <title>Dance Hall Hooligans | Official Website</title>
     <style>
         /* Reset and Base Styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #121212;
-            color: #ffffff;
-            line-height: 1.6;
+            font-family: 'Georgia', 'Times New Roman', serif;
+            background-color: #0b0f0e; color: #f4f4f2; line-height: 1.6;
         }
-        a {
-            color: #ff3e3e;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        a:hover {
-            color: #ff6b6b;
-        }
+        a { color: #dca642; text-decoration: none; transition: all 0.3s ease; }
+        a:hover { color: #b30e16; }
 
         /* Navigation */
         nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 5%;
-            background-color: #1a1a1a;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            border-bottom: 2px solid #ff3e3e;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 15px 5%; background-color: #060a09; position: sticky; top: 0; z-index: 100;
+            border-bottom: 3px solid #b30e16; box-shadow: 0 4px 15px rgba(0,0,0,0.5);
         }
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 2px;
+        .logo-box { display: flex; align-items: center; gap: 15px; }
+        .logo-img { height: 60px; width: auto; object-fit: contain; }
+        .logo-text { 
+            font-size: 1.6rem; font-weight: bold; text-transform: uppercase; letter-spacing: 2px; 
+            color: #dca642; text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
         }
-        .nav-links {
-            list-style: none;
-            display: flex;
-        }
-        .nav-links li {
-            margin-left: 20px;
-        }
+        .nav-links { list-style: none; display: flex; align-items: center; }
+        .nav-links li { margin-left: 25px; }
+        .nav-links a { font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px; color: #f4f4f2; }
+        .nav-links a:hover, .nav-links a.active { color: #dca642; }
 
         /* Hero Section */
         .hero {
-            height: 60vh;
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1501386761578-eac5c94b800a?q=80&w=1920') no-repeat center center/cover;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 0 20px;
+            height: 65vh;
+            background: linear-gradient(rgba(6, 10, 9, 0.85), rgba(11, 15, 14, 0.9)), #006351;
+            background-position: center center; background-repeat: no-repeat; background-size: cover;
+            display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 0 20px;
         }
-        .hero h1 {
-            font-size: 3.5rem;
-            text-transform: uppercase;
-            margin-bottom: 10px;
-            letter-spacing: 4px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+        .hero h1 { 
+            font-size: 4rem; text-transform: uppercase; margin-bottom: 15px; letter-spacing: 3px; 
+            color: #dca642; text-shadow: 3px 3px 0px #b30e16, 5px 5px 15px rgba(0,0,0,0.9);
         }
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 20px;
-            max-width: 600px;
-        }
+        .hero p { font-size: 1.3rem; margin-bottom: 30px; max-width: 650px; color: #cbd5d0; font-style: italic; }
         .btn {
-            display: inline-block;
-            background-color: #ff3e3e;
-            color: #fff;
-            padding: 10px 30px;
-            border-radius: 5px;
-            font-weight: bold;
-            text-transform: uppercase;
-            transition: background 0.3s;
+            display: inline-block; background-color: #b30e16; color: #fff; padding: 12px 35px;
+            border-radius: 3px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px;
+            transition: all 0.3s ease; border: 1px solid #dca642; box-shadow: 0 4px 6px rgba(0,0,0,0.3);
         }
-        .btn:hover {
-            background-color: #e02626;
-            color: #fff;
-        }
+        .btn:hover { background-color: #006351; color: #dca642; border-color: #b30e16; transform: translateY(-2px); }
 
         /* Main Content Container */
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 60px 20px;
+        .container { max-width: 1000px; margin: 0 auto; padding: 60px 20px; }
+        section { 
+            margin-bottom: 70px; background: #0e1412; padding: 40px; 
+            border-radius: 6px; border: 1px solid #192420; box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
-        section {
-            margin-bottom: 60px;
-        }
-        h2 {
-            font-size: 2rem;
-            text-transform: uppercase;
-            border-bottom: 2px solid #333;
-            padding-bottom: 10px;
-            margin-bottom: 30px;
-            letter-spacing: 1px;
-        }
+        h2 { font-size: 2rem; text-transform: uppercase; border-bottom: 2px solid #dca642; padding-bottom: 10px; margin-bottom: 35px; letter-spacing: 2px; color: #b30e16; }
 
         /* Tour Dates Table */
-        .tour-table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        .tour-table tr {
-            border-bottom: 1px solid #333;
-        }
-        .tour-table td {
-            padding: 15px 10px;
-        }
-        .tour-date {
-            font-weight: bold;
-            color: #ff3e3e;
-            width: 20%;
-        }
-        .tour-venue {
-            width: 50%;
-        }
-        .tour-location {
-            width: 20%;
-            color: #aaa;
-        }
-        .tour-tickets {
-            width: 10%;
-            text-align: right;
-        }
+        .tour-table { width: 100%; border-collapse: collapse; }
+        .tour-table tr { border-bottom: 1px solid #192420; transition: background 0.2s; }
+        .tour-table tr:hover { background-color: rgba(220, 166, 66, 0.03); }
+        .tour-table td { padding: 20px 10px; }
+        .tour-date { font-weight: bold; color: #dca642; width: 20%; font-size: 1.1rem; }
+        .tour-venue { width: 50%; font-weight: 600; }
+        .tour-location { width: 20%; color: #8ba196; }
+        .tour-tickets { width: 10%; text-align: right; }
 
-        /* Audio Player Placeholder */
-        .audio-container {
-            background: #1a1a1a;
-            padding: 30px;
-            border-radius: 8px;
-            text-align: center;
-            border: 1px solid #333;
-        }
+        /* Audio Player Container */
+        .audio-container { background: #060a09; padding: 30px; border-radius: 8px; text-align: center; border: 1px solid #b30e16; }
+        iframe { border-radius: 12px; border: none; width: 100%; max-width: 700px; height: 152px; }
+
+        /* About Layout */
+        #about p { font-size: 1.15rem; line-height: 1.8; color: #cbd5d0; text-align: justify; }
 
         /* Footer */
-        footer {
-            background-color: #0a0a0a;
-            text-align: center;
-            padding: 40px 20px;
-            font-size: 0.9rem;
-            color: #666;
-            border-top: 1px solid #222;
-        }
+        footer { background-color: #060a09; text-align: center; padding: 40px 20px; font-size: 0.9rem; color: #52665c; border-top: 2px solid #b30e16; }
 
         /* Responsive Design */
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
-            .nav-links { display: none; } /* Simplification for mobile */
-            .tour-table td { display: block; width: 100%; padding: 5px 0; }
+            .hero h1 { font-size: 2.8rem; }
+            .nav-links { display: none; }
+            .tour-table td { display: block; width: 100%; padding: 8px 10px; }
+            .tour-table tr { padding: 15px 0; display: block; }
             .tour-tickets { text-align: left; margin-top: 10px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Navigation -->
     <nav>
-        <div class="logo">The Dancehall Hooligans</div>
+        <a href="index.html" class="logo-box" id="logo-container">
+            </a>
         <ul class="nav-links">
-            <li><a href="#tour">Tour</a></li>
-            <li><a href="#music">Music</a></li>
-            <li><a href="#about">About</a></li>
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="songlist.html">Song List</a></li>
+            <li><a href="reviews.html">Reviews</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="shop.html">Shop</a></li>
         </ul>
     </nav>
 
-    <!-- Hero Section -->
-    <header class="hero">
-        <h1>The Dancehall Hooligans</h1>
+    <header class="hero" id="hero-section">
+        <h1>Dance Hall Hooligans</h1>
         <p>Bringing the noise, the riddim, and the energy straight to your town.</p>
         <a href="#tour" class="btn">See Live Dates</a>
     </header>
 
-    <!-- Main Content -->
     <div class="container">
-
-        <!-- Tour Section -->
         <section id="tour">
             <h2>Upcoming Tour Dates</h2>
-            <table class="tour-table">
-                <tr>
-                    <td class="tour-date">OCT 12</td>
-                    <td class="tour-venue">The Underground Sound</td>
-                    <td class="tour-location">Chicago, IL</td>
-                    <td class="tour-tickets"><a href="#" class="btn" style="padding: 5px 15px; font-size: 0.8rem;">Tickets</a></td>
-                </tr>
-                <tr>
-                    <td class="tour-date">OCT 15</td>
-                    <td class="tour-venue">Riddim Room</td>
-                    <td class="tour-location">New York, NY</td>
-                    <td class="tour-tickets"><a href="#" class="btn" style="padding: 5px 15px; font-size: 0.8rem;">Tickets</a></td>
-                </tr>
-                <tr>
-                    <td class="tour-date">OCT 22</td>
-                    <td class="tour-venue">Bassline Arena</td>
-                    <td class="tour-location">Los Angeles, CA</td>
-                    <td class="tour-tickets"><a href="#" class="btn" style="padding: 5px 15px; font-size: 0.8rem;">Tickets</a></td>
-                </tr>
-            </table>
+            <table class="tour-table" id="tour-list"></table>
         </section>
 
-        <!-- Music Section -->
         <section id="music">
             <h2>Listen Now</h2>
-            <div class="audio-container">
-                <p style="margin-bottom: 15px; color: #aaa;">Stream our latest tracks below</p>
-                <!-- Swap this out with an iframe embed from Spotify, SoundCloud, or Bandcamp -->
-                <audio controls style="width: 100%; max-width: 500px;">
-                    <source src="#" type="audio/mpeg">
-                    Your browser does not support the audio element.
-                </audio>
-            </div>
+            <div class="audio-container" id="music-container"></div>
         </section>
 
-        <!-- About Section -->
         <section id="about">
             <h2>About The Band</h2>
-            <p>Formed in the heat of the underground music scene, The Dancehall Hooligans merge heavy basslines, infectious rhythms, and raw energy into an unforgettable live experience. Known for turning every venue into a massive dance floor, they are redefining modern dancehall music with a rebellious edge.</p>
+            <p id="about-text"></p>
         </section>
-
     </div>
 
-    <!-- Footer -->
     <footer>
-        <p>&copy; 2026 The Dancehall Hooligans. All rights reserved.</p>
+        <p>© 2026 Dance Hall Hooligans. All rights reserved.</p>
     </footer>
 
+    <script>
+        fetch('data.json')
+            .then(response => response.json())
+            .then(data => {
+                const dirs = data.directories || { logos: "", pics: "", graphics: "" };
+                
+                // 1. Logo
+                const logoContainer = document.getElementById('logo-container');
+                let logoContent = "";
+                if (data.logoFile && data.logoFile.trim() !== "") {
+                    logoContent += `<img src="${dirs.logos}${data.logoFile}" alt="Logo" class="logo-img">`;
+                }
+                logoContent += `<span class="logo-text">Dance Hall Hooligans</span>`;
+                logoContainer.innerHTML = logoContent;
+
+                // 2. Hero Background
+                const heroSection = document.getElementById('hero-section');
+                if (data.heroBgFile && data.heroBgFile.trim() !== "") {
+                    heroSection.style.backgroundImage = `linear-gradient(rgba(6, 10, 9, 0.85), rgba(11, 15, 14, 0.9)), url('${dirs.pics}${data.heroBgFile}')`;
+                }
+
+                // 3. Tour Dates
+                const tourList = document.getElementById('tour-list');
+                if (data.tourDates.length === 0) {
+                    tourList.innerHTML = "<tr><td>More dates coming soon!</td></tr>";
+                } else {
+                    data.tourDates.forEach(show => {
+                        tourList.innerHTML += `<tr>
+                            <td class="tour-date">${show.date}</td>
+                            <td class="tour-venue">${show.venue}</td>
+                            <td class="tour-location">${show.location}</td>
+                            <td class="tour-tickets"><a href="${show.ticketLink}" target="_blank" class="btn" style="padding: 5px 15px; font-size: 0.8rem;">Tickets</a></td>
+                        </tr>`;
+                    });
+                }
+
+                // 4. Music Player
+                document.getElementById('music-container').innerHTML = `<iframe src="${data.streamingEmbed}" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>`;
+
+                // 5. About
+                document.getElementById('about-text').innerText = data.aboutText;
+            })
+            .catch(error => console.error("Error loading data:", error));
+    </script>
 </body>
 </html>

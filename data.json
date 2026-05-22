@@ -1,0 +1,40 @@
+{
+  "directories": {
+    "logos": "logos/",
+    "pics": "pics/",
+    "graphics": "graphics/"
+  },
+  "logoFile": "dhhlogo.jpg",
+  "heroBgFile": "hero-bg.jpg",
+  "aboutText": "Formed in the heat of the underground music scene, Dance Hall Hooligans merge heavy basslines, infectious rhythms, and raw energy into an unforgettable live experience. Known for turning every venue into a massive dance floor, they are redefining modern dancehall music with a rebellious edge.",
+  "streamingEmbed": "https://open.spotify.com/embed/playlist/37i9dQZF1DX82p6gmqYh8G",
+  
+  "tourDates": [
+    { "date": "OCT 12", "venue": "The Underground Sound", "location": "Chicago, IL", "ticketLink": "#" },
+    { "date": "OCT 15", "venue": "Riddim Room", "location": "New York, NY", "ticketLink": "#" },
+    { "date": "OCT 22", "venue": "Bassline Arena", "location": "Los Angeles, CA", "ticketLink": "#" }
+  ],
+
+  "songList": [
+    { "title": "Riddim Renegade", "category": "Originals", "duration": "3:45" },
+    { "title": "Bassline Hooligan", "category": "Originals", "duration": "4:12" },
+    { "title": "Concrete Jungle Dub", "category": "Covers", "duration": "3:58" },
+    { "title": "Sound System Riot", "category": "Originals", "duration": "4:05" }
+  ],
+
+  "reviews": [
+    { "quote": "The most energetic live set I've seen in a decade. Absolute chaos in the best way possible.", "reviewer": "Underground Music Blog", "stars": "⭐⭐⭐⭐⭐" },
+    { "quote": "Heavy basslines that shake the concrete. They turned the venue into a massive dance floor.", "reviewer": "Riddim Culture Magazine", "stars": "⭐⭐⭐⭐⭐" }
+  ],
+
+ "contact": {
+    "bookingEmail": "dancehallhooligans@gmail.com",
+    "managementPhone": "502-693-6593",
+    "facebookUrl": "https://www.facebook.com/profile.php?id=100092166190592"
+  },
+
+  "shopItems": [
+    { "name": "Official DHH Snapback", "price": "$25.00", "image": "cap.jpg", "link": "#" },
+    { "name": "Sound System Riot Vinyl", "price": "$30.00", "image": "vinyl.jpg", "link": "#" }
+  ]
+}

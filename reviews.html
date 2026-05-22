@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reviews | Dance Hall Hooligans</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Georgia', 'Times New Roman', serif; background-color: #0b0f0e; color: #f4f4f2; line-height: 1.6; }
+        a { color: #dca642; text-decoration: none; transition: all 0.3s ease; }
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; background-color: #060a09; position: sticky; top: 0; z-index: 100; border-bottom: 3px solid #b30e16; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
+        .logo-box { display: flex; align-items: center; gap: 15px; }
+        .logo-img { height: 60px; width: auto; object-fit: contain; }
+        .logo-text { font-size: 1.6rem; font-weight: bold; text-transform: uppercase; letter-spacing: 2px; color: #dca642; }
+        .nav-links { list-style: none; display: flex; align-items: center; }
+        .nav-links li { margin-left: 25px; }
+        .nav-links a { font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px; color: #f4f4f2; }
+        .nav-links a:hover, .nav-links .active { color: #dca642; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 60px 20px; }
+        section { background: #0e1412; padding: 40px; border-radius: 6px; border: 1px solid #192420; box-shadow: 0 10px 30px rgba(0,0,0,0.5); margin-bottom: 40px; }
+        h2 { font-size: 2rem; text-transform: uppercase; border-bottom: 2px solid #dca642; padding-bottom: 10px; margin-bottom: 35px; letter-spacing: 2px; color: #b30e16; }
+        .review-card { background: #060a09; padding: 30px; border-left: 4px solid #b30e16; margin-bottom: 25px; border-radius: 0 6px 6px 0; }
+        .quote { font-style: italic; font-size: 1.2rem; color: #cbd5d0; margin-bottom: 15px; }
+        .stars { color: #dca642; margin-bottom: 5px; }
+        .reviewer { font-weight: bold; color: #dca642; text-transform: uppercase; letter-spacing: 1px; font-size: 0.9rem; }
+        footer { background-color: #060a09; text-align: center; padding: 40px 20px; font-size: 0.9rem; color: #52665c; border-top: 2px solid #b30e16; }
+        @media (max-width: 768px) { .nav-links { display: none; } }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="logo-box" id="logo-container"></a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="songlist.html">Song List</a></li>
+            <li><a href="reviews.html" class="active">Reviews</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="shop.html">Shop</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <section id="reviews-container">
+            <h2>Crowd Feedback & Press</h2>
+        </section>
+    </div>
+    <footer><p>© 2026 Dance Hall Hooligans. All rights reserved.</p></footer>
+    <script>
+        fetch('data.json').then(res => res.json()).then(data => {
+            const dirs = data.directories || { logos: "" };
+            document.getElementById('logo-container').innerHTML = `<img src="${dirs.logos}${data.logoFile}" class="logo-img"><span class="logo-text">Dance Hall Hooligans</span>`;
+            
+            const container = document.getElementById('reviews-container');
+            data.reviews.forEach(rev => {
+                container.innerHTML += `<div class="review-card">
+                    <p class="quote">"${rev.quote}"</p>
+                    <div class="stars">${rev.stars}</div>
+                    <div class="reviewer">— ${rev.reviewer}</div>
+                </div>`;
+            });
+        });
+    </script>
+</body>
+</html>

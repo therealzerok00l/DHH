@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Song List | Dance Hall Hooligans</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Georgia', 'Times New Roman', serif; background-color: #0b0f0e; color: #f4f4f2; line-height: 1.6; }
+        a { color: #dca642; text-decoration: none; transition: all 0.3s ease; }
+        a:hover { color: #b30e16; }
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; background-color: #060a09; position: sticky; top: 0; z-index: 100; border-bottom: 3px solid #b30e16; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
+        .logo-box { display: flex; align-items: center; gap: 15px; }
+        .logo-img { height: 60px; width: auto; object-fit: contain; }
+        .logo-text { font-size: 1.6rem; font-weight: bold; text-transform: uppercase; letter-spacing: 2px; color: #dca642; }
+        .nav-links { list-style: none; display: flex; align-items: center; }
+        .nav-links li { margin-left: 25px; }
+        .nav-links a { font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px; color: #f4f4f2; }
+        .nav-links a:hover, .nav-links .active { color: #dca642; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 60px 20px; }
+        section { background: #0e1412; padding: 40px; border-radius: 6px; border: 1px solid #192420; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        h2 { font-size: 2rem; text-transform: uppercase; border-bottom: 2px solid #dca642; padding-bottom: 10px; margin-bottom: 35px; letter-spacing: 2px; color: #b30e16; }
+        .song-table { width: 100%; border-collapse: collapse; }
+        .song-table tr { border-bottom: 1px solid #192420; }
+        .song-table td { padding: 15px 10px; }
+        .song-title { font-weight: bold; font-size: 1.1rem; color: #f4f4f2; }
+        .song-cat { color: #dca642; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px; }
+        .song-time { text-align: right; color: #8ba196; }
+        footer { background-color: #060a09; text-align: center; padding: 40px 20px; font-size: 0.9rem; color: #52665c; border-top: 2px solid #b30e16; margin-top: 60px; }
+        @media (max-width: 768px) { .nav-links { display: none; } }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="logo-box" id="logo-container"></a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="songlist.html" class="active">Song List</a></li>
+            <li><a href="reviews.html">Reviews</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="shop.html">Shop</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <section>
+            <h2>Official Track & Set List</h2>
+            <table class="song-table" id="songs-target"></table>
+        </section>
+    </div>
+    <footer><p>© 2026 Dance Hall Hooligans. All rights reserved.</p></footer>
+    <script>
+        fetch('data.json').then(res => res.json()).then(data => {
+            const dirs = data.directories || { logos: "" };
+            document.getElementById('logo-container').innerHTML = `<img src="${dirs.logos}${data.logoFile}" class="logo-img"><span class="logo-text">Dance Hall Hooligans</span>`;
+            
+            const target = document.getElementById('songs-target');
+            data.songList.forEach(song => {
+                target.innerHTML += `<tr>
+                    <td class="song-title">${song.title}</td>
+                    <td class="song-cat"><span>${song.category}</span></td>
+                    <td class="song-time">${song.duration}</td>
+                </tr>`;
+            });
+        });
+    </script>
+</body>
+</html>
