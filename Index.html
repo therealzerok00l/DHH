@@ -31,24 +31,85 @@
         .nav-links a { font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px; color: #f4f4f2; }
         .nav-links a:hover, .nav-links a.active { color: #dca642; }
 
-        /* Hero Section */
+        /* Hero Container - Fluid Aspect Ratio Setup */
         .hero {
-            height: 65vh;
-            background: linear-gradient(rgba(6, 10, 9, 0.85), rgba(11, 15, 14, 0.9)), #006351;
-            background-position: center center; background-repeat: no-repeat; background-size: cover;
-            display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 0 20px;
+            position: relative;
+            width: 100%;
+            height: auto;
+            aspect-ratio: 16 / 9; 
+            max-height: 75vh; 
+            overflow: hidden;
+            display: flex; 
+            flex-direction: column; 
+            justify-content: flex-end; 
+            align-items: center; 
+            text-align: center;
+            background-color: #060a09;
         }
+
+        /* The Slider Canvas wrapper */
+        .hero-slider {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 1;
+        }
+
+        /* Individual Sliding Slide setup - Fluid fitting layout */
+        .slide {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-size: contain; 
+            background-position: center center;
+            background-repeat: no-repeat;
+            transform: translateX(100%);
+            transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        /* Dark overlay pinned strictly above the moving pictures, but below your text content */
+        .hero-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(rgba(6, 10, 9, 0.2), rgba(11, 15, 14, 0.7)); 
+            z-index: 2;
+        }
+
+        /* Hero Text & Button Content wrapper - Bottom centered layout */
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            padding: 0 20px 40px 20px; 
+            max-width: 800px;
+            width: 100%;
+        }
+        
         .hero h1 { 
-            font-size: 4rem; text-transform: uppercase; margin-bottom: 15px; letter-spacing: 3px; 
-            color: #dca642; text-shadow: 3px 3px 0px #b30e16, 5px 5px 15px rgba(0,0,0,0.9);
+            font-size: 4rem; 
+            text-transform: uppercase; 
+            margin-bottom: 10px; 
+            letter-spacing: 3px; 
+            color: rgba(220, 166, 66, 0.5); 
+            text-shadow: 3px 3px 0px rgba(179, 14, 22, 0.5), 5px 5px 15px rgba(0,0,0,0.6); 
         }
-        .hero p { font-size: 1.3rem; margin-bottom: 30px; max-width: 650px; color: #cbd5d0; font-style: italic; }
+        
+        .hero p { 
+            font-size: 1.3rem; 
+            margin-bottom: 25px; 
+            color: rgba(203, 213, 208, 0.5); 
+            font-style: italic; 
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.7); 
+        }
+        
         .btn {
             display: inline-block; background-color: #b30e16; color: #fff; padding: 12px 35px;
             border-radius: 3px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px;
             transition: all 0.3s ease; border: 1px solid #dca642; box-shadow: 0 4px 6px rgba(0,0,0,0.3);
         }
         .btn:hover { background-color: #006351; color: #dca642; border-color: #b30e16; transform: translateY(-2px); }
+
+        /* Slide Animation Utility Classes managed via JS */
+        .slide.active { transform: translateX(0) !important; }
+        .slide.exit-left { transform: translateX(-100%) !important; }
+        .slide.exit-right { transform: translateX(100%) !important; }
 
         /* Main Content Container */
         .container { max-width: 1000px; margin: 0 auto; padding: 60px 20px; }
@@ -58,15 +119,33 @@
         }
         h2 { font-size: 2rem; text-transform: uppercase; border-bottom: 2px solid #dca642; padding-bottom: 10px; margin-bottom: 35px; letter-spacing: 2px; color: #b30e16; }
 
-        /* Tour Dates Table */
+        /* Tour Dates Table Structure */
         .tour-table { width: 100%; border-collapse: collapse; }
         .tour-table tr { border-bottom: 1px solid #192420; transition: background 0.2s; }
         .tour-table tr:hover { background-color: rgba(220, 166, 66, 0.03); }
-        .tour-table td { padding: 20px 10px; }
-        .tour-date { font-weight: bold; color: #dca642; width: 20%; font-size: 1.1rem; }
-        .tour-venue { width: 50%; font-weight: 600; }
+        .tour-table td { padding: 20px 10px; vertical-align: middle; }
+        .tour-date { font-weight: bold; color: #dca642; width: 15%; font-size: 1.1rem; }
+        .tour-venue { width: 45%; font-weight: 600; }
         .tour-location { width: 20%; color: #8ba196; }
-        .tour-tickets { width: 10%; text-align: right; }
+        
+        /* Updated column constraints to lock layout box proportions completely */
+        .tour-tickets { 
+            width: 20%; 
+            text-align: right; 
+            min-width: 140px; 
+        }
+        
+        /* Utility layout button rules for explicit inline grid adjustments */
+        .tour-tickets .btn {
+            display: block;
+            width: 100%;
+            text-align: center;
+            padding: 8px 10px;
+            font-size: 0.8rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis; /* Keeps long words from ripping out the box edges */
+        }
 
         /* Audio Player Container */
         .audio-container { background: #060a09; padding: 30px; border-radius: 8px; text-align: center; border: 1px solid #b30e16; }
@@ -80,19 +159,21 @@
 
         /* Responsive Design */
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.8rem; }
+            .hero { aspect-ratio: unset; height: 45vh; } 
+            .hero h1 { font-size: 2.6rem; }
+            .hero p { font-size: 1.1rem; }
+            .hero-content { padding-bottom: 20px; }
             .nav-links { display: none; }
             .tour-table td { display: block; width: 100%; padding: 8px 10px; }
             .tour-table tr { padding: 15px 0; display: block; }
-            .tour-tickets { text-align: left; margin-top: 10px; }
+            .tour-tickets { text-align: left; margin-top: 10px; width: 100%; max-width: 200px; }
         }
     </style>
 </head>
 <body>
 
     <nav>
-        <a href="index.html" class="logo-box" id="logo-container">
-            </a>
+        <a href="index.html" class="logo-box" id="logo-container"></a>
         <ul class="nav-links">
             <li><a href="index.html" class="active">Home</a></li>
             <li><a href="songlist.html">Song List</a></li>
@@ -103,9 +184,14 @@
     </nav>
 
     <header class="hero" id="hero-section">
-        <h1>Dance Hall Hooligans</h1>
-        <p>Bringing the noise, the riddim, and the energy straight to your town.</p>
-        <a href="#tour" class="btn">See Live Dates</a>
+        <div class="hero-slider" id="slider-canvas"></div>
+        <div class="hero-overlay"></div>
+        
+        <div class="hero-content">
+            <h1>Dance Hall Hooligans</h1>
+            <p>Bringing the noise, the riddim, and the energy straight to your town.</p>
+            <a href="#tour" class="btn">SEE OUR LIVE DATES</a>
+        </div>
     </header>
 
     <div class="container">
@@ -130,12 +216,13 @@
     </footer>
 
     <script>
+        // --- MASTER DATA & UI LOADER ---
         fetch('data.json')
             .then(response => response.json())
             .then(data => {
                 const dirs = data.directories || { logos: "", pics: "", graphics: "" };
                 
-                // 1. Logo
+                // 1. Render Logo Branding
                 const logoContainer = document.getElementById('logo-container');
                 let logoContent = "";
                 if (data.logoFile && data.logoFile.trim() !== "") {
@@ -144,34 +231,122 @@
                 logoContent += `<span class="logo-text">Dance Hall Hooligans</span>`;
                 logoContainer.innerHTML = logoContent;
 
-                // 2. Hero Background
-                const heroSection = document.getElementById('hero-section');
-                if (data.heroBgFile && data.heroBgFile.trim() !== "") {
-                    heroSection.style.backgroundImage = `linear-gradient(rgba(6, 10, 9, 0.85), rgba(11, 15, 14, 0.9)), url('${dirs.pics}${data.heroBgFile}')`;
-                }
-
-                // 3. Tour Dates
+                // 2. Render Tour Dates
                 const tourList = document.getElementById('tour-list');
-                if (data.tourDates.length === 0) {
+                if (!data.tourDates || data.tourDates.length === 0) {
                     tourList.innerHTML = "<tr><td>More dates coming soon!</td></tr>";
                 } else {
                     data.tourDates.forEach(show => {
+                        const keys = Object.keys(show);
+                        const lastKey = keys[keys.length - 1];
+                        const buttonLabel = show[lastKey];
+
                         tourList.innerHTML += `<tr>
                             <td class="tour-date">${show.date}</td>
                             <td class="tour-venue">${show.venue}</td>
                             <td class="tour-location">${show.location}</td>
-                            <td class="tour-tickets"><a href="${show.ticketLink}" target="_blank" class="btn" style="padding: 5px 15px; font-size: 0.8rem;">Tickets</a></td>
+                            <td class="tour-tickets">
+                                <a href="#" class="btn">${buttonLabel}</a>
+                            </td>
                         </tr>`;
                     });
                 }
 
-                // 4. Music Player
+                // 3. Render Music Media Embed
                 document.getElementById('music-container').innerHTML = `<iframe src="${data.streamingEmbed}" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>`;
 
-                // 5. About
+                // 4. Render About Text Summary
                 document.getElementById('about-text').innerText = data.aboutText;
+
+                // 5. Initialize Background Slider
+                initializeBackgroundSlider(dirs.pics);
             })
-            .catch(error => console.error("Error loading data:", error));
+            .catch(error => console.error("Error loading master configurations:", error));
+
+
+        // --- AUTOMATED PICTURE BUMPING BACKGROUND SLIDER LOGIC ---
+        function initializeBackgroundSlider(picsDir) {
+            const sliderCanvas = document.getElementById('slider-canvas');
+            const checkedImages = [];
+            let loadedCount = 0;
+            const totalToTest = 10;
+
+            for (let i = 1; i <= totalToTest; i++) {
+                const img = new Image();
+                const imgSrc = `${picsDir}${i}.webp`;
+                
+                img.onload = function() {
+                    checkedImages.push(imgSrc);
+                    checkVerificationProgress();
+                };
+                img.onerror = function() {
+                    checkVerificationProgress();
+                };
+                img.src = imgSrc;
+            }
+
+            function checkVerificationProgress() {
+                loadedCount++;
+                if (loadedCount === totalToTest) {
+                    checkedImages.sort((a, b) => {
+                        const numA = parseInt(a.match(/(\d+)\.webp$/)[1]);
+                        const numB = parseInt(b.match(/(\d+)\.webp$/)[1]);
+                        return numA - numB;
+                    });
+
+                    if (checkedImages.length > 0) {
+                        startSliderEngine(checkedImages);
+                    }
+                }
+            }
+
+            function startSliderEngine(validImages) {
+                validImages.forEach((src) => {
+                    const slideDiv = document.createElement('div');
+                    slideDiv.className = 'slide';
+                    slideDiv.style.backgroundImage = `url('${src}')`;
+                    sliderCanvas.appendChild(slideDiv);
+                });
+
+                const slides = document.querySelectorAll('.slide');
+                let currentIndex = 0;
+                let directionFromLeft = true;
+
+                slides[currentIndex].classList.add('active');
+
+                if (validImages.length === 1) return;
+
+                setInterval(() => {
+                    const previousIndex = currentIndex;
+                    currentIndex = (currentIndex + 1) % slides.length;
+
+                    const currentSlide = slides[previousIndex];
+                    const nextSlide = slides[currentIndex];
+
+                    if (directionFromLeft) {
+                        nextSlide.style.transform = 'translateX(-100%)';
+                    } else {
+                        nextSlide.style.transform = 'translateX(100%)';
+                    }
+
+                    nextSlide.offsetHeight;
+
+                    nextSlide.classList.add('active');
+
+                    if (directionFromLeft) {
+                        currentSlide.className = 'slide exit-right';
+                    } else {
+                        currentSlide.className = 'slide exit-left';
+                    }
+
+                    setTimeout(() => {
+                        currentSlide.className = 'slide';
+                    }, 1200);
+
+                    directionFromLeft = !directionFromLeft;
+                }, 5000); 
+            }
+        }
     </script>
 </body>
 </html>
