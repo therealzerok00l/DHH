@@ -5,32 +5,90 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Song List | Dance Hall Hooligans</title>
     <style>
+        /* Reset and Base Styles */
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Georgia', 'Times New Roman', serif; background-color: #0b0f0e; color: #f4f4f2; line-height: 1.6; }
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            background-color: #0b0f0e; color: #f4f4f2; line-height: 1.6;
+        }
         a { color: #dca642; text-decoration: none; transition: all 0.3s ease; }
         a:hover { color: #b30e16; }
-        nav { display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; background-color: #060a09; position: sticky; top: 0; z-index: 100; border-bottom: 3px solid #b30e16; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
+
+        /* Navigation */
+        nav {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 15px 5%; background-color: #060a09; position: sticky; top: 0; z-index: 100;
+            border-bottom: 3px solid #b30e16; box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
         .logo-box { display: flex; align-items: center; gap: 15px; }
         .logo-img { height: 60px; width: auto; object-fit: contain; }
-        .logo-text { font-size: 1.6rem; font-weight: bold; text-transform: uppercase; letter-spacing: 2px; color: #dca642; }
+        .logo-text { 
+            font-size: 1.6rem; font-weight: bold; text-transform: uppercase; letter-spacing: 2px; 
+            color: #dca642; text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+        }
         .nav-links { list-style: none; display: flex; align-items: center; }
         .nav-links li { margin-left: 25px; }
         .nav-links a { font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px; color: #f4f4f2; }
-        .nav-links a:hover, .nav-links .active { color: #dca642; }
-        .container { max-width: 1000px; margin: 0 auto; padding: 60px 20px; }
-        section { background: #0e1412; padding: 40px; border-radius: 6px; border: 1px solid #192420; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-        h2 { font-size: 2rem; text-transform: uppercase; border-bottom: 2px solid #dca642; padding-bottom: 10px; margin-bottom: 35px; letter-spacing: 2px; color: #b30e16; }
-        .song-table { width: 100%; border-collapse: collapse; }
-        .song-table tr { border-bottom: 1px solid #192420; }
-        .song-table td { padding: 15px 10px; }
-        .song-title { font-weight: bold; font-size: 1.1rem; color: #f4f4f2; }
-        .song-cat { color: #dca642; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px; }
-        .song-time { text-align: right; color: #8ba196; }
+        .nav-links a:hover, .nav-links a.active { color: #dca642; }
+
+        /* Main Content Container */
+        .container { max-width: 1000px; margin: 0 auto; padding: 40px 20px; }
+        
+        section { 
+            background: #0e1412; padding: 40px; 
+            border-radius: 6px; border: 1px solid #192420; box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        
+        h1 { 
+            font-size: 2.5rem; text-transform: uppercase; text-align: center;
+            color: #dca642; margin-bottom: 10px; letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+        }
+        
+        .subtitle {
+            text-align: center; color: #8ba196; font-style: italic; margin-bottom: 30px; font-size: 1.1rem;
+        }
+
+        /* Search Filter Styling */
+        .search-container {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .search-input {
+            width: 100%; max-width: 500px; padding: 12px 20px; font-size: 1rem;
+            background-color: #060a09; border: 1px solid #dca642; color: #f4f4f2;
+            border-radius: 4px; transition: all 0.3s ease; font-family: sans-serif;
+        }
+        .search-input:focus {
+            outline: none; border-color: #b30e16; box-shadow: 0 0 10px rgba(179, 14, 22, 0.3);
+        }
+
+        /* Song Table Layout */
+        .song-table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        .song-table th { 
+            text-align: left; padding: 15px 10px; border-bottom: 2px solid #dca642; 
+            color: #b30e16; text-transform: uppercase; letter-spacing: 1px; font-size: 1.1rem;
+        }
+        .song-table tr { border-bottom: 1px solid #192420; transition: background 0.2s; }
+        .song-table tr:hover { background-color: rgba(220, 166, 66, 0.03); }
+        .song-table td { padding: 15px 10px; vertical-align: middle; }
+        
+        .song-title { font-weight: bold; color: #f4f4f2; width: 50%; font-size: 1.1rem; }
+        .song-artist { color: #cbd5d0; width: 50%; font-style: italic; }
+
+        /* Footer */
         footer { background-color: #060a09; text-align: center; padding: 40px 20px; font-size: 0.9rem; color: #52665c; border-top: 2px solid #b30e16; margin-top: 60px; }
-        @media (max-width: 768px) { .nav-links { display: none; } }
+
+        /* Responsive Settings */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .song-table th { font-size: 1rem; }
+            .song-table td { font-size: 0.95rem; }
+        }
     </style>
 </head>
 <body>
+
     <nav>
         <a href="index.html" class="logo-box" id="logo-container"></a>
         <ul class="nav-links">
@@ -41,26 +99,93 @@
             <li><a href="shop.html">Shop</a></li>
         </ul>
     </nav>
+
     <div class="container">
-        <section>
-            <h2>Official Track & Set List</h2>
-            <table class="song-table" id="songs-target"></table>
+        <section id="songs-section">
+            <h1>Our Song List</h1>
+            <p class="subtitle">A massive mix of rock, pop, dance, and classics to keep the floor moving all night long.</p>
+            
+            <div class="search-container">
+                <input type="text" id="song-search" class="search-input" placeholder="Search by song title or artist...">
+            </div>
+
+            <table class="song-table">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Artist</th>
+                    </tr>
+                </thead>
+                <tbody id="song-list-tbody">
+                    </tbody>
+            </table>
         </section>
     </div>
-    <footer><p>© 2026 Dance Hall Hooligans. All rights reserved.</p></footer>
+
+    <footer>
+        <p>© 2026 Dance Hall Hooligans. All rights reserved.</p>
+    </footer>
+
     <script>
-        fetch('data.json').then(res => res.json()).then(data => {
-            const dirs = data.directories || { logos: "" };
-            document.getElementById('logo-container').innerHTML = `<img src="${dirs.logos}${data.logoFile}" class="logo-img"><span class="logo-text">Dance Hall Hooligans</span>`;
-            
-            const target = document.getElementById('songs-target');
-            data.songList.forEach(song => {
-                target.innerHTML += `<tr>
+        // Array to hold song data globally for filtering
+        let allSongs = [];
+
+        // --- MASTER DATA & LOGO LOADER ---
+        fetch('data.json')
+            .then(response => response.json())
+            .then(data => {
+                const dirs = data.directories || { logos: "", pics: "", graphics: "" };
+                
+                // 1. Render Logo Branding (Matches index.html exactly)
+                const logoContainer = document.getElementById('logo-container');
+                let logoContent = "";
+                if (data.logoFile && data.logoFile.trim() !== "") {
+                    logoContent += `<img src="${dirs.logos}${data.logoFile}" alt="Logo" class="logo-img">`;
+                }
+                logoContent += `<span class="logo-text">Dance Hall Hooligans</span>`;
+                logoContainer.innerHTML = logoContent;
+
+                // 2. Keep record of the updated song list array
+                allSongs = data.songList || [];
+                
+                // 3. Trigger initial rendering of table rows
+                renderSongTable(allSongs);
+            })
+            .catch(error => console.error("Error loading master song configurations:", error));
+
+
+        // --- TABLE ROW INJECTION PARSER ---
+        function renderSongTable(songsToDisplay) {
+            const tbody = document.getElementById('song-list-tbody');
+            tbody.innerHTML = ""; // Clear existing records
+
+            if (songsToDisplay.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="2" style="text-align: center; color: #8ba196; padding: 30px;">No matching songs found.</td></tr>`;
+                return;
+            }
+
+            songsToDisplay.forEach(song => {
+                tbody.innerHTML += `<tr>
                     <td class="song-title">${song.title}</td>
-                    <td class="song-cat"><span>${song.category}</span></td>
-                    <td class="song-time">${song.duration}</td>
+                    <td class="song-artist">${song.artist}</td>
                 </tr>`;
             });
+        }
+
+
+        // --- LIVE SEARCH FILTER CONTROLLER ---
+        const searchInput = document.getElementById('song-search');
+        searchInput.addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase().trim();
+            
+            // Filter list based on title OR artist name matching query string
+            const filteredSongs = allSongs.filter(song => {
+                const titleMatch = song.title.toLowerCase().includes(searchTerm);
+                const artistMatch = song.artist.toLowerCase().includes(searchTerm);
+                return titleMatch || artistMatch;
+            });
+
+            renderSongTable(filteredSongs);
         });
     </script>
 </body>
