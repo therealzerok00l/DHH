@@ -154,8 +154,27 @@
             border: 1px solid #b30e16; 
         }
 
-        /* About Layout */
-        #about p { font-size: 1.15rem; line-height: 1.8; color: #cbd5d0; text-align: justify; }
+        /* About Section Layout & Typography Styles */
+        .about-content h3 {
+            font-size: 1.4rem;
+            color: #dca642;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-left: 3px solid #b30e16;
+            padding-left: 10px;
+        }
+        .about-content p { 
+            font-size: 1.1rem; 
+            line-height: 1.8; 
+            color: #cbd5d0; 
+            text-align: justify;
+            margin-bottom: 20px;
+        }
+        .about-content p strong {
+            color: #f4f4f2;
+        }
 
         /* Footer */
         footer { background-color: #060a09; text-align: center; padding: 40px 20px; font-size: 0.9rem; color: #52665c; border-top: 2px solid #b30e16; }
@@ -192,6 +211,8 @@
             .tour-table td { display: block; width: 100%; padding: 8px 10px; }
             .tour-table tr { padding: 15px 0; display: block; }
             .tour-tickets { text-align: left; margin-top: 10px; width: 100%; max-width: 200px; }
+            
+            .about-content p { text-align: left; }
         }
     </style>
 </head>
@@ -232,7 +253,27 @@
 
         <section id="about">
             <h2>About The Band</h2>
-            <p id="about-text"></p>
+            <div class="about-content">
+                <p><strong>Dance Hall Hooligans: High-Energy, Crowd-First Rock ‘n’ Roll</strong></p>
+                <p>There are bands that play at an audience, and then there are bands that play with them. Dance Hall Hooligans fall firmly into the latter camp. Built on a foundation of blistering talent, relentless energy, and a collective 30+ years of stage experience, this is a band that doesn’t just put on a show—they host a party where the crowd gets top billing.</p>
+                <p>Based on a simple but powerful philosophy that the audience is the most important member of the band, Dance Hall Hooligans have mastered the art of the sonic connection. Whether they are packing out a sweaty dive bar, commanding a festival stage, or keeping the dance floor moving at a private event, their mission remains unchanged: read the room, rev the engine, and leave everyone wanting more.</p>
+                
+                <h3>Meet the Hooligans</h3>
+                <p>The magic of Dance Hall Hooligans lies in their powerhouse lineup. Each member brings a distinct flavor and a veteran resume to the table, creating a chemistry that is both volatile and perfectly controlled.</p>
+                <p><strong>Sarah Eberle (Lead Vocals):</strong> The undeniable focal point of the live experience. Sarah possesses a vocal range that can shift from a soulful, gritty growl to soaring, crystalline hooks in a heartbeat. More than just a singer, she is a master class in crowd engagement, possessing the rare ability to lock eyes with the back row and make a room of hundreds feel intimate.</p>
+                <p><strong>Shawn Matty (Guitar):</strong> The sonic architect. Shawn’s guitar work provides the band's bite, seamlessly pivoting from infectious, rhythmic riffs to soaring solos. His playing is dynamic, adaptive, and always serves the song—and the energy of the room.</p>
+                <p><strong>Earl Lauzon (Bass):</strong> The low-end anchor. Earl holds down the groove with a rock-solid precision that you don't just hear—you feel it in your chest. His locked-in rhythm keeps the dance floor moving and provides the heavy, melodic foundation the band thrives on.</p>
+                <p><strong>Nick Hoehler (Drums):</strong> The engine room. Nick brings a powerhouse mix of technical precision and raw, unbridled energy to the kit. He dictates the heartbeat of the show, driving the tempos and reacting in real-time to the band’s improvisational turns.</p>
+                
+                <h3>Sonic Agility & The Power of Flexibility</h3>
+                <p>With their current, definitive lineup, Dance Hall Hooligans have unlocked a new level of musical shape-shifting. They pride themselves on an unparalleled sonic flexibility. They aren't tied down by rigid genres or static setlists; instead, they treat every performance as a live conversation with the crowd.</p>
+                <p>"We don't just show up with a script," the band says. "If we see the crowd leaning into a certain groove, we pivot. If they want it heavier, we turn it up. If they want to dance, we lock into the pocket. Our goal is to make sure every single person in the room feels like the show was custom-made for them."</p>
+                <p>With over three decades of collective experience under their belts, there is quite literally nothing this band cannot handle. They’ve survived the trenches of late-night club gigs, mastered the logistics of high-profile corporate events, and learned exactly how to handle any curveball a live environment can throw at them. This deep well of experience translates into a fearless, carefree confidence on stage that allows them to take risks and keep audiences entirely hooked.</p>
+                
+                <h3>The Crowd-First Philosophy</h3>
+                <p>In an industry often driven by ego, Dance Hall Hooligans stand out for their genuine humility and dedication to their fans. To them, the stage isn't a pedestal—it’s a platform to connect. Every breakdown, every call-and-response, and every high-octane chorus is designed to pull the audience into the experience.</p>
+                <p>When you book or see Dance Hall Hooligans, you aren't just getting a cover-to-cover playlist of incredible music. You are getting a highly adaptable, fiercely professional, and passionately loud unit dedicated to creating unforgettable memories. They are ready for any situation, any venue, and any crowd. All you have to do is show up.</p>
+            </div>
         </section>
     </div>
 
@@ -287,8 +328,8 @@
                         allowfullscreen>
                     </iframe>`;
 
-                // 4. Render About Text Summary
-                document.getElementById('about-text').innerText = data.aboutText;
+                // Note: Section 4 dynamically pulled data.aboutText from JSON before. 
+                // It is now rendered directly within the structural HTML layout block above for complex typography.
 
                 // 5. Initialize Automated Slide Engine
                 initializeBackgroundSlider(dirs.pics);
