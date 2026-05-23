@@ -7,9 +7,9 @@
   "logoFile": "dhhlogo.jpg",
   "heroBgFile": "hero-bg.jpg",
   "aboutText": "Formed in the heat of the underground music scene, Dance Hall Hooligans merge heavy basslines, infectious rhythms, and raw energy into an unforgettable live experience. Known for turning every venue into a massive dance floor, they are redefining modern dancehall music with a rebellious edge.",
-  "streamingEmbed": "https://open.spotify.com/embed/playlist/37i9dQZF1DX82p6gmqYh8G",
+ "streamingEmbed": "https://www.youtube.com/embed/Ie1t5yOvDCM?feature=share",
   
-  "tourDates": [
+    "tourDates": [
     { "date": "Nov 20", "venue": "The Blind Squirrel", "location": "Louisville, KY", "Tickets": "Free" },
     { "date": "Aug 23", "venue": "TBA", "location": "Louisville, KY", "Tickets": "Free" },
     { "date": "Aug 09", "venue": "The Blind Squirrel", "location": "Louisville, KY", "Tickets": "Free" },

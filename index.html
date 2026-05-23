@@ -128,14 +128,12 @@
         .tour-venue { width: 45%; font-weight: 600; }
         .tour-location { width: 20%; color: #8ba196; }
         
-        /* Updated column constraints to lock layout box proportions completely */
         .tour-tickets { 
             width: 20%; 
             text-align: right; 
             min-width: 140px; 
         }
         
-        /* Utility layout button rules for explicit inline grid adjustments */
         .tour-tickets .btn {
             display: block;
             width: 100%;
@@ -144,12 +142,17 @@
             font-size: 0.8rem;
             white-space: nowrap;
             overflow: hidden;
-            text-overflow: ellipsis; /* Keeps long words from ripping out the box edges */
+            text-overflow: ellipsis;
         }
 
-        /* Audio Player Container */
-        .audio-container { background: #060a09; padding: 30px; border-radius: 8px; text-align: center; border: 1px solid #b30e16; }
-        iframe { border-radius: 12px; border: none; width: 100%; max-width: 700px; height: 152px; }
+        /* Media Player Wrapper */
+        .audio-container { 
+            background: #060a09; 
+            padding: 30px; 
+            border-radius: 8px; 
+            text-align: center; 
+            border: 1px solid #b30e16; 
+        }
 
         /* About Layout */
         #about p { font-size: 1.15rem; line-height: 1.8; color: #cbd5d0; text-align: justify; }
@@ -157,13 +160,35 @@
         /* Footer */
         footer { background-color: #060a09; text-align: center; padding: 40px 20px; font-size: 0.9rem; color: #52665c; border-top: 2px solid #b30e16; }
 
-        /* Responsive Design */
+        /* Responsive UI Framework Adjustments */
         @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 15px;
+                padding: 15px 2%;
+            }
+            
+            .nav-links {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+                width: 100%;
+            }
+            
+            .nav-links li {
+                margin-left: 0;
+            }
+
+            .nav-links a {
+                font-size: 0.95rem;
+            }
+
             .hero { aspect-ratio: unset; height: 45vh; } 
             .hero h1 { font-size: 2.6rem; }
             .hero p { font-size: 1.1rem; }
             .hero-content { padding-bottom: 20px; }
-            .nav-links { display: none; }
+            
             .tour-table td { display: block; width: 100%; padding: 8px 10px; }
             .tour-table tr { padding: 15px 0; display: block; }
             .tour-tickets { text-align: left; margin-top: 10px; width: 100%; max-width: 200px; }
@@ -216,7 +241,7 @@
     </footer>
 
     <script>
-        // --- MASTER DATA & UI LOADER ---
+        // --- MASTER DATA & UI ENGINE LOADER ---
         fetch('data.json')
             .then(response => response.json())
             .then(data => {
@@ -252,13 +277,20 @@
                     });
                 }
 
-                // 3. Render Music Media Embed
-                document.getElementById('music-container').innerHTML = `<iframe src="${data.streamingEmbed}" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>`;
+                // 3. Render Optimized Media Stream Core (Custom Widescreen Layout for YouTube Video)
+                document.getElementById('music-container').innerHTML = `
+                    <iframe 
+                        src="${data.streamingEmbed}" 
+                        width="100%" 
+                        style="border:none; max-width:700px; aspect-ratio:16/9; margin:0 auto; display:block; border-radius:8px;" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        allowfullscreen>
+                    </iframe>`;
 
                 // 4. Render About Text Summary
                 document.getElementById('about-text').innerText = data.aboutText;
 
-                // 5. Initialize Background Slider
+                // 5. Initialize Automated Slide Engine
                 initializeBackgroundSlider(dirs.pics);
             })
             .catch(error => console.error("Error loading master configurations:", error));
